@@ -1,8 +1,8 @@
 defmodule BlogBackendWeb.AuthController do
   use BlogBackendWeb, :controller
 
-  def login(%{"username" => username, "password" => password}) do
-    IO.inspect(%{"username" => username, "password" => password}")
+  def login(conn, %{"username" => username, "password" => password}) do
+    IO.inspect(%{"username" => username, "password" => password})
     if username == "admin" and password == "password" do
       conn
       |> put_status(:ok)

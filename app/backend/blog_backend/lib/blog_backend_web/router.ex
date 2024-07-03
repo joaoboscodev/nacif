@@ -9,5 +9,6 @@ defmodule BlogBackendWeb.Router do
     pipe_through :api
 
     post "/login", AuthController, :login
+    get "/posts", PostController, :index
   end
 end

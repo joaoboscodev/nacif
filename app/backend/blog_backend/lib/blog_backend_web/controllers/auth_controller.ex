@@ -9,7 +9,7 @@ defmodule BlogBackendWeb.AuthController do
     else
       conn
       |> put_status(:unauthorized)
-      |> json(%{error: "Invalid credentials"})
+      |> json(%{error: "Invalid login"})
     end
   end
 end

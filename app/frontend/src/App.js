@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Login from './components/Login';
 import BlogPosts from './components/BlogPosts';
+import CreatePost from './components/CreatePost';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,11 +25,20 @@ function App() {
     }
   }, [isAuthenticated]);
 
+  const handleCreatePost = (newPost) => {
+    setPosts([...posts, newPost]);
+  };
+
   if (!isAuthenticated) {
     return <Login setIsAuthenticated={setIsAuthenticated} />;
   }
 
-  return <BlogPosts posts={posts} />;
+  return (
+    <div>
+      <CreatePost onCreatePost={handleCreatePost} />
+      <BlogPosts posts={posts} />
+    </div>
+  );
 }
 
 export default App;

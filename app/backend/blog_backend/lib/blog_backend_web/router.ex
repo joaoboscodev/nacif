@@ -10,5 +10,6 @@ defmodule BlogBackendWeb.Router do
 
     post "/login", AuthController, :login
     get "/posts", PostController, :index
+    post "/posts", PostController, :create
   end
 end

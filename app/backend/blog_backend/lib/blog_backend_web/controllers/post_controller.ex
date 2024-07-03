@@ -2,10 +2,12 @@ defmodule BlogBackendWeb.PostController do
   use BlogBackendWeb, :controller
 
   def index(conn, _params) do
-    posts = [
-      %{id: 1, title: "First Post", body: "This is the first post"},
-      %{id: 2, title: "Second Post", body: "This is the second post"}
-    ]
-    json(conn, posts)
+    # Post de teste
+    post = %{
+      id: 1,
+      title: "Post de Teste",
+      body: "Este é um post de teste criado para demonstração."
+    }
+    json(conn, [post])
   end
 end

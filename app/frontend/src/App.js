@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import Login from './components/Login';
 
 function App() {
-  const [posts, setPosts] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/posts')
-      .then(response => response.json())
-      .then(data => setPosts(data));
-  }, []);
+    if (isAuthenticated) {
+      fetch('http://localhost:3000/api/posts')
+        .then(response => response.json())
+    }
+  }, [isAuthenticated]);
+
+  if (!isAuthenticated) {
+    return <Login setIsAuthenticated={setIsAuthenticated} />;
+  }
 
   return (
     <div className="App">
       <h1>Blog Posts</h1>
-      <ul>
-        {posts.map(post => (
-          <li key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

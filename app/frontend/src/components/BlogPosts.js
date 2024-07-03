@@ -1,18 +1,14 @@
 import React from 'react';
 
-const BlogPosts = ({ posts }) => {
+const BlogPosts = ({ posts, onDeletePost }) => {
   return (
     <div>
-      <h1>Blog Posts</h1>
       <ul>
-        <li key={1}>
-          <h2>Post Title</h2>
-          <p>Post content</p>
-        </li>
         {posts.map(post => (
           <li key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
+            <button onClick={() => onDeletePost(post.id)}>Delete</button>
           </li>
         ))}
       </ul>

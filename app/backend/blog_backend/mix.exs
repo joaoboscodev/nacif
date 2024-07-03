@@ -56,7 +56,8 @@ defmodule BlogBackend.MixProject do
       {:phoenix_live_reload, "~> 1.3.3", only: :dev},
       {:phoenix_live_view, "~> 0.20.17"},
       {:plug_cowboy, "~> 2.5"},
-      {:cors_plug, "~> 2.0"}
+      {:cors_plug, "~> 2.0"},
+      {:uuid, "~> 1.1"}
     ]
   end
 

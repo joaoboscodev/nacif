@@ -3,7 +3,7 @@ defmodule BlogBackendWeb.PostController do
   alias UUID
 
   def allposts(conn, _params) do
-    # here: get logic if using real database
+    #get logic for real database
     post = %{
       id: UUID.uuid4(),
       title: "Post de Teste",
@@ -13,7 +13,7 @@ defmodule BlogBackendWeb.PostController do
   end
 
   def create(conn, %{"title" => title, "body" => body}) do
-    # here: create logic if using real database
+    #create logic for real database
     new_post = %{
       id: UUID.uuid4(),
       title: title,
@@ -23,7 +23,17 @@ defmodule BlogBackendWeb.PostController do
   end
 
   def delete(conn, %{"id" => _id}) do
-    # here: delete logic if using real database
+    #delete logic for real database
     send_resp(conn, :no_content, "")
+  end
+
+  def update(conn, %{"id" => id, "title" => title, "body" => body}) do
+    #update logic for real database
+    updated_post = %{
+      id: id,
+      title: title,
+      body: body
+    }
+    json(conn, updated_post)
   end
 end

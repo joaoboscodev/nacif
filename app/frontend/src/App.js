@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Login from './components/Login';
 import BlogPosts from './components/BlogPosts';
 import CreatePost from './components/CreatePost';
+import EditPost from './components/EditPost';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [editingPost, setEditingPost] = useState(null);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,6 +31,11 @@ function App() {
     setPosts([...posts, newPost]);
   };
 
+  const handleEditPost = (updatedPost) => {
+    setPosts(posts.map(post => (post.id === updatedPost.id ? updatedPost : post)));
+    setEditingPost(null);
+  };
+
   const handleDeletePost = (postId) => {
     fetch(`http://localhost:4000/api/posts/${postId}`, {
       method: 'DELETE',
@@ -50,9 +57,13 @@ function App() {
 
   return (
     <div>
-      <h1>Blog Posts App</h1>
-      <CreatePost onCreatePost={handleCreatePost} />
-      <BlogPosts posts={posts} onDeletePost={handleDeletePost} />
+      <h1>Blog Posts</h1>
+      {editingPost ? (
+        <EditPost post={editingPost} onEditPost={handleEditPost} />
+      ) : (
+        <CreatePost onCreatePost={handleCreatePost} />
+      )}
+      <BlogPosts posts={posts} onEditPost={setEditingPost} onDeletePost={handleDeletePost} />
     </div>
   );
 }

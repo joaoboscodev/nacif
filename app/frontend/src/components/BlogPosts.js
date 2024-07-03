@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BlogPosts = ({ posts, onDeletePost }) => {
+const BlogPosts = ({ posts, onEditPost, onDeletePost }) => {
   return (
     <div>
       <ul>
@@ -8,6 +8,7 @@ const BlogPosts = ({ posts, onDeletePost }) => {
           <li key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
+            <button onClick={() => onEditPost(post)}>Edit</button>
             <button onClick={() => onDeletePost(post.id)}>Delete</button>
           </li>
         ))}

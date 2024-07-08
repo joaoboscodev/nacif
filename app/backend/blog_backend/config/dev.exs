@@ -69,6 +69,6 @@ config :blog_backend, BlogBackendWeb.Endpoint,
   render_errors: [view: BlogBackendWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: BlogBackend.PubSub,
   live_view: [signing_salt: "YOUR_SIGNING_SALT"],
-  http: [port: 4000],
+  http: [ip: {0,0,0,0}, port: 4000],
   check_origin: false,
   watchers: []

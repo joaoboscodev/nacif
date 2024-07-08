@@ -12,7 +12,7 @@ const Login = ({ setIsAuthenticated }) => {
     })
       .then(response => {
         if (!response.ok) {
-          throw new Error('Invalid login');
+          throw new Error('Failed Login');
         }
         return response.json();
       })

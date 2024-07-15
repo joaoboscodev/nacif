@@ -16,7 +16,7 @@ const Login = ({ setIsAuthenticated }) => {
         }
         return response.json();
       })
-      .then(data => {
+      .then(() => {
         setIsAuthenticated(true);
       })
       .catch(error => {
